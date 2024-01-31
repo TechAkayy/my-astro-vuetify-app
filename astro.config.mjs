@@ -10,7 +10,7 @@ import svelte from '@astrojs/svelte'
 import Pinegrow from '@pinegrow/astro-module'
 import AutoImportComponents from 'unplugin-vue-components/vite'
 import AutoImportAPIs from 'unplugin-auto-import/astro'
-import Unocss from 'unocss/astro'
+import Unocss from 'unocss/vite'
 import presetIcons from '@unocss/preset-icons'
 // import VueDevTools from 'vite-plugin-vue-devtools'
 // import myAstroModule from './src/modules/my-module'
@@ -41,18 +41,7 @@ export default defineConfig({
       include: ['**/solid/*'],
     }),
     svelte(),
-    Unocss({
-      presets: [
-        presetIcons({
-          prefix: 'i-', // default prefix, do not change
-        }),
-      ],
-      content: {
-        pipeline: {
-          include: ['./src/**/*'],
-        },
-      },
-    }),
+    
     mdx(),
     sitemap(),
     // For details, refer to https://github.com/antfu/unplugin-auto-import#configuration
@@ -118,6 +107,18 @@ export default defineConfig({
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.mdx?/],
         // resolvers: [], // Auto-import using resolvers
         dts: 'components.d.ts',
+      }),
+      Unocss({
+        presets: [
+          presetIcons({
+            prefix: 'i-', // default prefix, do not change
+          }),
+        ],
+        content: {
+          pipeline: {
+            include: ['./src/**/*'],
+          },
+        },
       }),
       // VueDevTools()
     ],
