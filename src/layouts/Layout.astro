@@ -1,4 +1,5 @@
 ---
+import 'uno.css'
 import BaseHead from '@/components/BaseHead.astro'
 
 import Header from '@/components/Header.astro'
@@ -22,9 +23,9 @@ const currentPath = Astro.url.pathname
     <Header title={SITE_TITLE} />
         <slot />
         <Footer />
-        <script>
+        <!-- <script>
           import 'uno.css'
-        </script>
+        </script> -->
           </body>
 </html>
 
